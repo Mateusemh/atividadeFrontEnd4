@@ -1,0 +1,32 @@
+function calcularTotal(precoUnitario, quantidade) {
+    return precoUnitario * quantidade;
+}
+
+function aplicarDesconto(valorTotal) {
+    if (valorTotal > 100) {
+        return valorTotal * 0.9; 
+    }
+    return valorTotal;
+}
+
+function exibirResumo(precoUnitario, quantidade) {
+    const valorTotal = calcularTotal(precoUnitario, quantidade);
+    const valorComDesconto = aplicarDesconto(valorTotal);
+    
+    console.log("Resumo da Compra:");
+    console.log(`Valor total antes do desconto: R$ ${valorTotal.toFixed(2)}`);
+    console.log(`Valor final com desconto: R$ ${valorComDesconto.toFixed(2)}`);
+}
+
+// Verifica se está rodando no navegador
+if (typeof window !== "undefined") {
+    const precoUnitario = parseFloat(prompt("Digite o preço unitário do produto: "));
+    const quantidade = parseInt(prompt("Digite a quantidade comprada: "));
+    exibirResumo(precoUnitario, quantidade);
+} else {
+    // Exemplo de uso com valores fixos para ambiente Node.js
+    const preco = 50.60; 
+    const qtd = 4; 
+    const total = calcularTotal(preco, qtd);
+    console.log(`O valor total da compra é: R$ ${total.toFixed(2)}`);
+}
